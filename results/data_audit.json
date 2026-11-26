@@ -1,0 +1,95 @@
+{
+  "samples": 390,
+  "cases": 299,
+  "controls": 91,
+  "cohorts": 6,
+  "union_genera": 820,
+  "duplicate_sample_ids": 0,
+  "zero_library_samples": 0,
+  "class_prevalence": 0.7666666666666667,
+  "cohort_records": [
+    {
+      "cohort": "PRJNA1089365",
+      "metadata_n": 44,
+      "otu_n": 44,
+      "matched_before_qc": 44,
+      "analyzed_n": 44,
+      "cases": 34,
+      "controls": 10,
+      "raw_genera": 326,
+      "missing_from_otu": [],
+      "missing_from_metadata": [],
+      "excluded_zero_assigned_abundance": []
+    },
+    {
+      "cohort": "PRJNA1152299",
+      "metadata_n": 120,
+      "otu_n": 120,
+      "matched_before_qc": 120,
+      "analyzed_n": 120,
+      "cases": 99,
+      "controls": 21,
+      "raw_genera": 346,
+      "missing_from_otu": [],
+      "missing_from_metadata": [],
+      "excluded_zero_assigned_abundance": []
+    },
+    {
+      "cohort": "PRJNA1370285",
+      "metadata_n": 55,
+      "otu_n": 55,
+      "matched_before_qc": 55,
+      "analyzed_n": 55,
+      "cases": 40,
+      "controls": 15,
+      "raw_genera": 412,
+      "missing_from_otu": [],
+      "missing_from_metadata": [],
+      "excluded_zero_assigned_abundance": []
+    },
+    {
+      "cohort": "PRJNA720274",
+      "metadata_n": 54,
+      "otu_n": 54,
+      "matched_before_qc": 54,
+      "analyzed_n": 54,
+      "cases": 46,
+      "controls": 8,
+      "raw_genera": 274,
+      "missing_from_otu": [],
+      "missing_from_metadata": [],
+      "excluded_zero_assigned_abundance": []
+    },
+    {
+      "cohort": "PRJNA851946",
+      "metadata_n": 62,
+      "otu_n": 62,
+      "matched_before_qc": 62,
+      "analyzed_n": 62,
+      "cases": 32,
+      "controls": 30,
+      "raw_genera": 153,
+      "missing_from_otu": [],
+      "missing_from_metadata": [],
+      "excluded_zero_assigned_abundance": []
+    },
+    {
+      "cohort": "PRJNA962007",
+      "metadata_n": 58,
+      "otu_n": 58,
+      "matched_before_qc": 58,
+      "analyzed_n": 55,
+      "cases": 48,
+      "controls": 7,
+      "raw_genera": 50,
+      "missing_from_otu": [],
+      "missing_from_metadata": [],
+      "excluded_zero_assigned_abundance": [
+        "SRR24308264",
+        "SRR24308272",
+        "SRR24308273"
+      ]
+    }
+  ],
+  "excluded_metadata_only_cohort": "PRJNA914906 has metadata but no abundance table used in the final analysis"
+}

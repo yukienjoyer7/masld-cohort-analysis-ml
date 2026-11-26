@@ -1,0 +1,7 @@
+cohort,metadata_n,otu_n,matched_before_qc,analyzed_n,cases,controls,raw_genera,missing_from_otu,missing_from_metadata,excluded_zero_assigned_abundance
+PRJNA1089365,44,44,44,44,34,10,326,[],[],[]
+PRJNA1152299,120,120,120,120,99,21,346,[],[],[]
+PRJNA1370285,55,55,55,55,40,15,412,[],[],[]
+PRJNA720274,54,54,54,54,46,8,274,[],[],[]
+PRJNA851946,62,62,62,62,32,30,153,[],[],[]
+PRJNA962007,58,58,58,55,48,7,50,[],[],"['SRR24308264', 'SRR24308272', 'SRR24308273']"

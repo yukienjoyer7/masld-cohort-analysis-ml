@@ -1,0 +1,92 @@
+{
+  "best_model_by_pooled_auc": {
+    "model": "SVM",
+    "n": 390,
+    "cases": 299,
+    "controls": 91,
+    "auc_roc": 0.6838913594766437,
+    "auc_pr": 0.8681907319616957,
+    "balanced_accuracy": 0.5986622073578596,
+    "sensitivity": 0.5819397993311036,
+    "specificity": 0.6153846153846154,
+    "brier": 0.16724718793119636,
+    "auc_ci_low": 0.621106307474627,
+    "auc_ci_high": 0.7436662400494268,
+    "macro_cohort_auc": 0.6784317322486014,
+    "macro_auc_ci_low": 0.5246329365079366,
+    "macro_auc_ci_high": 0.8224163260861365,
+    "min_cohort_auc": 0.3928571428571429,
+    "max_cohort_auc": 0.9558823529411764
+  },
+  "permanova": [
+    {
+      "term": "Diagnosis adjusted for cohort",
+      "pseudo_f": 5.05653888359327,
+      "r2": 0.0071286077759477595,
+      "df_effect": 1,
+      "df_residual": 383,
+      "permutations": 999,
+      "p_value": 0.001
+    },
+    {
+      "term": "Cohort adjusted for diagnosis",
+      "pseudo_f": 61.606638088813135,
+      "r2": 0.4342590548990609,
+      "df_effect": 5,
+      "df_residual": 383,
+      "permutations": 999,
+      "p_value": 0.001
+    }
+  ],
+  "stable_taxa_fdr_0_05": 7,
+  "sensitivity_excluding_hiv": [
+    {
+      "model": "CNN",
+      "n": 335.0,
+      "cases": 251.0,
+      "controls": 84.0,
+      "auc_roc": 0.6442800227660785,
+      "auc_pr": 0.840651929967567,
+      "balanced_accuracy": 0.6001233162587745,
+      "sensitivity": 0.46215139442231074,
+      "specificity": 0.7380952380952381,
+      "brier": 0.21857796741989288
+    },
+    {
+      "model": "MLP",
+      "n": 335.0,
+      "cases": 251.0,
+      "controls": 84.0,
+      "auc_roc": 0.6419559855814837,
+      "auc_pr": 0.8033433613332535,
+      "balanced_accuracy": 0.6082811610700057,
+      "sensitivity": 0.5737051792828686,
+      "specificity": 0.6428571428571429,
+      "brier": 0.18164341458268066
+    },
+    {
+      "model": "Random forest",
+      "n": 335.0,
+      "cases": 251.0,
+      "controls": 84.0,
+      "auc_roc": 0.7037089736292923,
+      "auc_pr": 0.8613949119360219,
+      "balanced_accuracy": 0.5741557579206982,
+      "sensitivity": 0.3745019920318725,
+      "specificity": 0.7738095238095238,
+      "brier": 0.17357390899429917
+    },
+    {
+      "model": "SVM",
+      "n": 335.0,
+      "cases": 251.0,
+      "controls": 84.0,
+      "auc_roc": 0.7055587175109087,
+      "auc_pr": 0.8709507053929859,
+      "balanced_accuracy": 0.6382802124833997,
+      "sensitivity": 0.6932270916334662,
+      "specificity": 0.5833333333333334,
+      "brier": 0.1753790460353259
+    }
+  ]
+}

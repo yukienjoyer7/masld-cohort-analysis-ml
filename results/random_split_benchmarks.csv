@@ -1,0 +1,3 @@
+validation,predictor,auc_roc
+Random 5-fold,Microbiome random forest,0.7595464735932963
+Random 5-fold,Cohort prevalence only,0.6110110625160792

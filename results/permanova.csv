@@ -1,0 +1,3 @@
+term,pseudo_f,r2,df_effect,df_residual,permutations,p_value
+Diagnosis adjusted for cohort,5.05653888359327,0.0071286077759477595,1,383,999,0.001
+Cohort adjusted for diagnosis,61.606638088813135,0.4342590548990609,5,383,999,0.001

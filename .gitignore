@@ -1,0 +1,10 @@
+/paper/
+/OTU-table/
+/.venv/
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
