@@ -1,14 +1,16 @@
-# Reproducible downstream analysis
+# Analisis Hilir Lintas Kohor
 
-## Data provenance
+`run_analysis.py` mengolah tabel kelimpahan hasil pemrosesan 16S rRNA menjadi fitur genus terharmonisasi, lalu menjalankan analisis statistik dan evaluasi pembelajaran mesin lintas kohor.
 
-The abundance tables expected in the local `OTU-table/` directory are intermediate outputs produced by this study, not premade external tables. This input directory is Git-ignored and is not included in the public repository. Public raw 16S rRNA reads and metadata were retrieved from the NCBI Sequence Read Archive for BioProjects PRJNA1089365, PRJNA1152299, PRJNA1370285, PRJNA720274, PRJNA851946, and PRJNA962007. The reads were processed with QIIME 2, using DADA2 for quality control, denoising, and chimera filtering. Taxonomy was assigned with SILVA and aggregated at genus level before cross-cohort harmonization.
+## Asal dan batas data
 
-The upstream QIIME 2/DADA2 scripts, artifacts, commands, software/database versions, and complete parameter logs have not yet been organized in this repository snapshot. Exact trimming, denoising, classifier, amplicon-region, and read-attrition details are therefore intentionally not stated here.
+Tabel yang diharapkan dalam folder lokal `OTU-table/` adalah keluaran antara yang dihasilkan oleh penelitian ini, bukan tabel eksternal siap pakai. Pembacaan mentah dan metadata berasal dari NCBI SRA untuk BioProject PRJNA1089365, PRJNA1152299, PRJNA1370285, PRJNA720274, PRJNA851946, dan PRJNA962007. Pemrosesan hulu menggunakan QIIME 2, DADA2, dan SILVA sebelum agregasi tingkat genus.
 
-## Running the downstream pipeline
+Folder `OTU-table/` tidak disertakan dalam Git. Daftar berkas masukan, negara, dan aturan label untuk setiap kohor didefinisikan pada `COHORTS` di `run_analysis.py`. Perintah, artefak, versi, dan parameter lengkap untuk tahap QIIME 2/DADA2/SILVA belum disertakan; skrip ini tidak mereproduksi tahap tersebut.
 
-After restoring the expected local `OTU-table/` files, run from the project root:
+## Menjalankan
+
+Setelah menyiapkan berkas masukan lokal dengan nama yang sesuai, jalankan dari akar proyek:
 
 ```bash
 uv venv .venv --python 3.12
@@ -16,8 +18,10 @@ uv pip install --python .venv/bin/python -r requirements.txt --extra-index-url h
 .venv/bin/python src/run_analysis.py
 ```
 
-The script loads the study-derived abundance tables, harmonizes assigned genera, applies multiplicative zero replacement and centered log-ratio transformation, and runs nested leave-one-cohort-out evaluation. Every feature filter, reducer, model choice, and decision threshold is fitted without the held-out cohort. It also produces Bray-Curtis PCoA, cohort-adjusted PERMANOVA, random-effects differential meta-analysis, sensitivity analysis excluding the HIV-associated cohort, and analytical figures in `results/figures/`.
+Untuk membuat ulang gambar tanpa melatih ulang model, gunakan `--figures-only`. Mode ini tetap membaca `OTU-table/`, antara lain untuk menghitung ordinasi Bray-Curtis. Keluaran numerik disimpan di `results/`, sedangkan gambar analitik berada di `results/figures/`.
 
-The manuscript and its dedicated graphical-overview illustration are kept locally under the Git-ignored `paper/` directory. On a clean clone, the script skips that optional manuscript-only figure while still generating all analytical figures.
+## Validasi dan keluaran
 
-The random 5-fold benchmark is included only to quantify validation optimism. It is not the primary performance estimate.
+Pipeline menjalankan harmonisasi genus, transformasi *centered log-ratio*, ordinasi Bray-Curtis, PERMANOVA tersesuaikan kohor, meta-analisis efek acak, analisis sensitivitas, serta evaluasi SVM, random forest, MLP, dan CNN 1D. Pada validasi *nested leave-one-cohort-out*, seluruh penyaringan fitur, transformasi, reduksi dimensi, pemilihan model, dan ambang klasifikasi dipelajari tanpa kohor uji luar. Pembagian acak lima lipatan dilaporkan sebagai pembanding untuk menilai optimisme validasi, bukan sebagai estimasi kinerja utama.
+
+Naskah dan berkas sumber ilustrasi khusus naskah disimpan secara lokal di `paper/`, yang diabaikan oleh Git. Tanpa salinan ilustrasi di folder tersebut, skrip melewati pembuatan ikhtisar naskah tetapi tetap menghasilkan gambar analitik lain. Salinan aset final untuk peninjauan tersedia di `assets/`.
