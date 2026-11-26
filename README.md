@@ -10,7 +10,7 @@ Repositori ini memuat kode dan hasil eksperimen untuk menguji hubungan mikrobiom
 
 Data saat ini berasal dari enam BioProject publik NCBI Sequence Read Archive (SRA): PRJNA1089365, PRJNA1152299, PRJNA1370285, PRJNA720274, PRJNA851946, dan PRJNA962007. Analisis mencakup 390 sampel dari Thailand, Tiongkok, dan Spanyol: 299 kasus dan 91 kontrol. Setelah harmonisasi, terdapat 820 fitur taksonomi.
 
-**Kohor Indonesia masih dalam proses pengumpulan dan belum termasuk dalam data, angka, atau gambar pada repositori ini.** Persiapan integrasinya dicatat dalam [checklist kohor Indonesia](docs/indonesia_cohort_integration.md). Penambahan kohor tersebut akan memerlukan pemeriksaan data dan perhitungan ulang seluruh hasil yang bergantung pada komposisi kohor.
+**Kohor Indonesia masih dalam proses pengumpulan dan belum termasuk dalam data, angka, atau gambar pada repositori ini.** Persiapan integrasinya dicatat dalam [checklist kohor Indonesia](docs/indonesia_cohort_integration.md), sedangkan skrip dan urutan eksperimen tambahan dijelaskan dalam [protokol eksperimen Indonesia](docs/indonesia_experiments.md). Penambahan kohor tersebut akan memerlukan pemeriksaan data dan perhitungan ulang seluruh hasil yang bergantung pada komposisi kohor.
 
 ## Asal data dan alur analisis
 
@@ -24,13 +24,16 @@ Dokumentasi lengkap perintah, artefak, versi, dan parameter pipeline QIIME 2/DAD
 
 | Lokasi | Isi |
 | --- | --- |
-| `src/` | Implementasi dan petunjuk analisis hilir |
+| `src/` | Implementasi analisis hilir dan eksperimen tambahan Indonesia |
 | `results/` | Audit data, prediksi tingkat sampel, metrik, statistik, dan gambar analitik |
 | `assets/` | Aset visual terpilih dari naskah, beserta atribusinya |
-| `docs/` | Checklist integrasi kohor Indonesia |
+| `docs/` | Checklist integrasi dan protokol eksperimen kohor Indonesia |
+| `config/` | Daftar kandidat takson enam kohor yang dibekukan sebelum validasi Indonesia |
 | `requirements.txt` | Dependensi Python yang digunakan |
 
 Folder lokal `OTU-table/` berisi tabel kelimpahan dan metadata masukan. Folder tersebut, bersama `paper/`, diabaikan oleh Git. Hasil yang sudah dihitung tersedia untuk ditelaah, tetapi menjalankan ulang pipeline memerlukan berkas masukan lokal.
+
+Modul `src/indonesia_extension.py` menyiapkan pembekuan model sumber, validasi eksternal, perbandingan pelatihan, profil keragaman, ordinasi geografis, dan uji replikasi genus. Data dan hasil tingkat sampel Indonesia disimpan lokal; `results/indonesia/` juga diabaikan oleh Git. Modul ini belum dijalankan pada kohor Indonesia.
 
 ## Menjalankan analisis
 

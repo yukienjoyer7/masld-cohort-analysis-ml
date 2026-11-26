@@ -132,9 +132,9 @@ def derive_label(row: pd.Series, spec: CohortSpec) -> int:
     return int(value.lower() != spec.control_rule.lower())
 
 
-def load_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def load_data(cohorts: list[CohortSpec] | None = None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     matrices, metadata, audits = [], [], []
-    for spec in COHORTS:
+    for spec in COHORTS if cohorts is None else cohorts:
         otu = read_otu(DATA_DIR / spec.otu)
         meta = pd.read_csv(DATA_DIR / spec.metadata, dtype=str)
         sample_col = "sample-id" if "sample-id" in meta.columns else "Run"
@@ -193,8 +193,8 @@ def counts_to_clr(x: np.ndarray) -> np.ndarray:
 
 
 class FeatureTransformer:
-    def __init__(self, method: str, k: int, seed: int = SEED):
-        self.method, self.k, self.seed = method, k, seed
+    def __init__(self, method: str, k: int, seed: int = SEED, min_cohorts: int = 2):
+        self.method, self.k, self.seed, self.min_cohorts = method, k, seed, min_cohorts
 
     def fit(self, x: pd.DataFrame, y: np.ndarray, groups: np.ndarray):
         any_training = (x > 0).any(axis=0).to_numpy()
@@ -203,7 +203,7 @@ class FeatureTransformer:
         present = base_values > 0
         min_n = max(5, int(math.ceil(0.10 * len(x))))
         cohort_presence = np.vstack([present[groups == g].any(axis=0) for g in np.unique(groups)]).sum(axis=0)
-        keep = (present.sum(axis=0) >= min_n) & (cohort_presence >= 2)
+        keep = (present.sum(axis=0) >= min_n) & (cohort_presence >= self.min_cohorts)
         if keep.sum() < 5:
             raise ValueError("Too few genera after training-only prevalence filtering")
         self.keep_indices_ = np.flatnonzero(keep)
@@ -319,8 +319,8 @@ def make_model(name: str, seed: int):
     raise ValueError(name)
 
 
-def fit_bundle(x: pd.DataFrame, y: np.ndarray, groups: np.ndarray, method: str, k: int, model_name: str, seed: int):
-    transformer = FeatureTransformer(method, k, seed).fit(x, y, groups)
+def fit_bundle(x: pd.DataFrame, y: np.ndarray, groups: np.ndarray, method: str, k: int, model_name: str, seed: int, min_cohorts: int = 2):
+    transformer = FeatureTransformer(method, k, seed, min_cohorts).fit(x, y, groups)
     z = transformer.transform(x)
     model = make_model(model_name, seed)
     with warnings.catch_warnings():

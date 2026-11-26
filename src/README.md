@@ -2,6 +2,8 @@
 
 `run_analysis.py` mengolah tabel kelimpahan hasil pemrosesan 16S rRNA menjadi fitur genus terharmonisasi, lalu menjalankan analisis statistik dan evaluasi pembelajaran mesin lintas kohor.
 
+`indonesia_extension.py` menyiapkan eksperimen tambahan untuk kohor Indonesia saat data tersedia. Perintah dan batas interpretasinya tercantum pada [protokol eksperimen Indonesia](../docs/indonesia_experiments.md). Model enam kohor sumber dapat dibekukan sebelum validasi eksternal; modul belum menghasilkan hasil Indonesia.
+
 ## Asal dan batas data
 
 Tabel yang diharapkan dalam folder lokal `OTU-table/` adalah keluaran antara yang dihasilkan oleh penelitian ini, bukan tabel eksternal siap pakai. Pembacaan mentah dan metadata berasal dari NCBI SRA untuk BioProject PRJNA1089365, PRJNA1152299, PRJNA1370285, PRJNA720274, PRJNA851946, dan PRJNA962007. Pemrosesan hulu menggunakan QIIME 2, DADA2, dan SILVA sebelum agregasi tingkat genus.

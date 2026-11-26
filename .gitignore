@@ -1,5 +1,6 @@
 /paper/
 /OTU-table/
+/results/indonesia/
 /.venv/
 /.pytest_cache/
 /.mypy_cache/
